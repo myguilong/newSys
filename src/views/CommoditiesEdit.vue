@@ -136,7 +136,8 @@ export default {
            parentCategory:this.form.region,
            limit:this.form.limit,
            sellOut:0,
-           bannerlist:this.uploadImgList
+           bannerlist:this.uploadImgList,
+           status:1
         })
         if(res.data.code == 0){
           this.$message({
