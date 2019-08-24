@@ -85,7 +85,6 @@
 <script>
 import OSS from 'ali-oss'
 import { VueEditor } from "vue2-editor";
-import { nearer } from 'q';
 export default {
   props: {
     id: {}
@@ -127,15 +126,14 @@ export default {
   },
   created() {
     this.fetchCategoryList();
-    this.getCommitesInfo()
+    // this.id&&this.getCommitesInfo()
   },
   methods: {
     remove(index) {
       this.files.splice(index, 1);
     },
      async save(){
-        let res = await this.$http.post('/rest/comities/edit',{
-           id:this.id,
+        let res = await this.$http.post('/rest/comities/create',{
            name:this.form.name,
            price:this.form.price,
            specifications:this.form.Specifications,
@@ -151,7 +149,7 @@ export default {
         if(res.data.code == 0){
           this.$message({
             type:'success',
-            message:'商品编辑成功'
+            message:'商品上架成功'
            })
         this.$router.push('/commoditites/List')
         }
@@ -306,14 +304,10 @@ export default {
         this.form.content =  res.data.data.content
         this.form.region = res.data.data.parentCategory
         this.form.limit = res.data.data.limit
+        this.uploadImgList = res.data.data.bannerlist
         this.form.oldprice = res.data.data.oldprice
-        const newarr = res.data.data.bannerlist.map(item=>{
-          return {
-            src: item
-          };
-        })
-        console.log(newarr,'新的数组')
-        this.files = newarr
+        this.myImglist = res.data.data.bannerlist
+        this.files =  res.data.data.bannerlist
        }
   }
 };

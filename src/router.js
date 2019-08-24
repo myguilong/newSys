@@ -5,8 +5,11 @@ import Login from './views/Login.vue';
 import CategoryEdit from './views/CategoryEdit.vue'
 import CategoryList from './views/CategoryList.vue'
 import CommitiesEdit from './views/CommoditiesEdit.vue'
+import CommitiesAdd from './views/CommoditiesAdd.vue'
 import CommititesList from './views/CommoditiesList.vue'
 import CommititesdownList from './views/CommoditiesdownList.vue'
+import headerList from './views/headerList.vue'
+import headerListis from './views/headerListis.vue'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -30,9 +33,15 @@ export default new Router({
           props:true
         },
         {
-          path:'/commoditites/Edit',
+          path:'/commoditites/Edit/:id',
           name:'commoditiesEdit',
-          component:CommitiesEdit
+          component:CommitiesEdit,
+          props:true
+        },
+        {
+          path:'/commodities/Add',
+          name:'CommitiesAdd',
+          component:CommitiesAdd
         },
         {
           path:'/commoditites/List',
@@ -43,6 +52,16 @@ export default new Router({
           path:'/commoditites/downList',
           name:'commititesdownList',
           component:CommititesdownList
+        },
+        {
+          path:"/header/list",
+          name:'headerList',
+          component:headerList
+        },
+        {
+          path:"/header/isheaderList",
+          name:'headerListis',
+          component:headerListis
         }
       ]
     },{
@@ -52,3 +71,4 @@ export default new Router({
     }
   ]
 })
+ 

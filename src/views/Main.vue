@@ -11,7 +11,7 @@
         </el-menu-item-group>
         <el-menu-item-group >
           <template slot="title">商品管理</template>
-          <el-menu-item index="/commoditites/Edit">上架商品</el-menu-item>
+          <el-menu-item index="/commodities/Add">上架商品</el-menu-item>
           <el-menu-item index="/commoditites/List">商品列表</el-menu-item>
           <el-menu-item index="/commoditites/downList">已经下架的商品</el-menu-item>
         </el-menu-item-group>
@@ -24,8 +24,8 @@
         <template slot="title"><i class="el-icon-s-custom"></i>团长管理</template>
         <el-menu-item-group>
           <template slot="title">团长管理</template>
-          <el-menu-item index="2-1">团长审核</el-menu-item>
-          <el-menu-item index="2-2">团长列表</el-menu-item>
+          <el-menu-item index="/header/list">团长审核</el-menu-item>
+          <el-menu-item index="/header/isheaderList">团长列表</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group>
             <template slot="title">订单管理</template>

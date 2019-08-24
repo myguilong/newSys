@@ -9,12 +9,12 @@
         </el-table-column>
          <el-table-column  label="删除" width="120">
           <template slot-scope="scope">
-            <el-button @click="handleDelte(scope.row)" type="text" size="small">删除</el-button>
+              <el-button @click="handleDelte(scope.row)" type="danger"  icon="el-icon-delete" circle></el-button>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="120">
+        <el-table-column label="编辑" width="120">
           <template slot-scope="scope">
-            <el-button @click="handleClick(scope.row)" type="text" size="small">编辑</el-button>
+              <el-button @click="handleClick(scope.row)" type="primary" icon="el-icon-edit" circle></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -33,11 +33,15 @@ export default {
              this.list = res.data.data
          },
          async handleDelte(row){
-             let res = await this.$http.get(`/rest/category/edit/${row._id}`)
+             let res = await this.$http.get(`/rest/category/delete?id=${row._id}`)
              if(res.data.code == 0){
                  this.$message({
                      type:'success',
                      message:`${res.data.msg}`
+                 })
+                 this.$message({
+                   type:'success',
+                   message:'删除分类成功'
                  })
                  this.fetchCategoryList()
              }
