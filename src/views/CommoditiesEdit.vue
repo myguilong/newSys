@@ -108,7 +108,7 @@ export default {
         limit:''
       },
       categoryList: [],
-       customToolbar: [
+      customToolbar: [
         ["bold", "italic", "underline"],
         [{ align: "" }, { align: "center" }, { align: "right" }],
         [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
@@ -122,13 +122,18 @@ export default {
       uploading: false,
       myImglist:[],
       uploadImgList:[]
-  
     };
   },
   created() {
     this.fetchCategoryList();
     this.getCommitesInfo()
   },
+   activated(){
+      console.log('activated')
+     },
+     deactivated(){
+       console.log('deactivated')
+     },
   methods: {
     remove(index) {
       this.files.splice(index, 1);
@@ -153,6 +158,7 @@ export default {
             type:'success',
             message:'商品编辑成功'
            })
+            Object.assign(this.$data, this.$options.data());
         this.$router.push('/commoditites/List')
         }
      },

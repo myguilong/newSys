@@ -42,6 +42,12 @@ export default {
      created(){
          this.fetchCommodList()
      },
+     activated(){
+      console.log('activated')
+     },
+     deactivated(){
+       console.log('deactivated')
+     },
      methods: {
         async fetchCommodList(){
           let res =await this.$http.get('/rest/comities/list?id=1')

@@ -86,7 +86,8 @@ export default {
     return {
       ruleForm: {
         username: "",
-        password: ""
+        password: "",
+        pintai:'admin'
       },
       rules: {
         username: [{ validator: validatePass, trigger: "blur" }],
@@ -106,8 +107,9 @@ export default {
                type:'success',
                message:'登录成功'
              })
-             let data = await this.$http.get('/users/getuser')
-             console.log(data)
+            //  let data = await this.$http.get('/users/getuser')
+             console.log(res.data)
+             localStorage.setItem('userinfo', JSON.stringify(res.data))
              this.$router.push('/')
            }
         } else {

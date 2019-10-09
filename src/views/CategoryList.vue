@@ -27,13 +27,21 @@ export default {
               list:[]
           } 
      },
+      activated(){
+      console.log('activated')
+     },
+     deactivated(){
+       console.log('deactivated')
+     },
      methods: {
          async fetchCategoryList(){
              let res = await this.$http.get('/rest/category/list')
              this.list = res.data.data
          },
          async handleDelte(row){
-             let res = await this.$http.get(`/rest/category/delete?id=${row._id}`)
+             let token = JSON.parse(localStorage.getItem('userinfo')).tk
+             console.log(token)
+             let res = await this.$http.get(`/rest/category/delete?id=${row._id}&token=${token}`)
              if(res.data.code == 0){
                  this.$message({
                      type:'success',
@@ -44,7 +52,15 @@ export default {
                    message:'删除分类成功'
                  })
                  this.fetchCategoryList()
-             }
+             }else{
+                 this.$message({
+                     type:'err',
+                     message:`${res.data.msg}`
+                 })
+                 this.$router.push({
+                   path:'/login'
+                 })     
+            }
          },
          async handleClick(row){
            this.$router.push(`/categores/Edit/${row._id}`)

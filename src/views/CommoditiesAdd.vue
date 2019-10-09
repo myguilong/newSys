@@ -128,6 +128,12 @@ export default {
     this.fetchCategoryList();
     // this.id&&this.getCommitesInfo()
   },
+   activated(){
+      console.log('activated')
+     },
+     deactivated(){
+       console.log('deactivated')
+     },
   methods: {
     remove(index) {
       this.files.splice(index, 1);
@@ -151,7 +157,9 @@ export default {
             type:'success',
             message:'商品上架成功'
            })
+            Object.assign(this.$data, this.$options.data());
         this.$router.push('/commoditites/List')
+        this.$store
         }
      },
      add() {

@@ -64,7 +64,13 @@ export default {
      },
      created(){
          this.fetchCategoryList()
-     }
+     },
+     activated(){
+      console.log('activated')
+     },
+     deactivated(){
+       console.log('deactivated')
+     },
      
 }
 </script>

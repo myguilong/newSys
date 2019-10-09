@@ -31,6 +31,12 @@ export default {
   created() {
     this.id && this.fetchGetCategory();
   },
+   activated(){
+      console.log('activated')
+     },
+     deactivated(){
+       console.log('deactivated')
+     },
   methods: {
     save() {
       if (this.id) {
@@ -49,7 +55,9 @@ export default {
         type: "success",
         message: "修改分类信息成功"
       });
+       Object.assign(this.$data, this.$options.data());
       this.$router.push("/categores/List");
+      this.$store.commit('changeTab', "/categores/List")
     },
     async fetchGetCategory() {
       let res = await this.$http.get("/rest/category/getInfo", {
@@ -83,7 +91,9 @@ export default {
         type: "success",
         message: "添加分类成功"
       });
+      Object.assign(this.$data, this.$options.data());
       this.$router.push("/categores/List");
+      this.$store.commit('changeTab', "/categores/List")
     }
   }
 };

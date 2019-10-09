@@ -10,6 +10,7 @@ import CommititesList from './views/CommoditiesList.vue'
 import CommititesdownList from './views/CommoditiesdownList.vue'
 import headerList from './views/headerList.vue'
 import headerListis from './views/headerListis.vue'
+import headerOrder from './views/header/headerOrder.vue'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -17,11 +18,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Main,
+      meta:{
+        keepAlive:false//需要被缓存的组件
+      },
       children:[
         {
           path:'/categories/Edit',
           component:CategoryEdit,
-      
+          meta:{
+            keepAlive:true //需要被缓存的组件
+          }
         },
         {
           path:'/categores/List',
@@ -30,38 +36,67 @@ export default new Router({
         {
           path:'/categores/Edit/:id',
           component:CategoryEdit,
-          props:true
+          props:true,
+          meta:{
+            keepAlive:true //需要被缓存的组件
+          }
         },
         {
           path:'/commoditites/Edit/:id',
           name:'commoditiesEdit',
           component:CommitiesEdit,
-          props:true
+          props:true,
+          meta:{
+            keepAlive:true //需要被缓存的组件
+          }
         },
         {
           path:'/commodities/Add',
           name:'CommitiesAdd',
-          component:CommitiesAdd
+          component:CommitiesAdd,
+          meta:{
+            keepAlive:true //需要被缓存的组件
+          }
         },
         {
           path:'/commoditites/List',
           name:'commodititesList',
-          component:CommititesList
+          component:CommititesList,
+          meta:{
+            keepAlive:false //需要被缓存的组件
+          }
         },
         {
           path:'/commoditites/downList',
           name:'commititesdownList',
-          component:CommititesdownList
+          component:CommititesdownList,
+          meta:{
+            keepAlive:false //需要被缓存的组件
+          }
         },
         {
           path:"/header/list",
           name:'headerList',
-          component:headerList
+          component:headerList,
+          meta:{
+            keepAlive:false //需要被缓存的组件
+          }
         },
         {
           path:"/header/isheaderList",
           name:'headerListis',
-          component:headerListis
+          component:headerListis,
+          meta:{
+            keepAlive:false //需要被缓存的组件
+          }
+        },
+        {
+          path:'/header/headerOrder',
+          name:'headerOrder',
+          component:headerOrder,
+          meta:{
+            keepAlive:false
+          }
         }
       ]
     },{
