@@ -100,7 +100,22 @@ export default {
     },
     exportOrder(){
 
-    
+       console.log('导出订单')
+       if(this.value1=='' && this.value2==''){
+              this.$message({
+                type:'fail',
+                message:'操作失败请选择时间'
+        })
+       }else{
+         this.$http.get('/adminheader/exportOrder',{
+           params:{
+             startTime:this.value1,
+             endTime:this.value2
+           }
+         }).then(res=>{
+              console.log(res)
+         })
+       }
     }
   }
 };
