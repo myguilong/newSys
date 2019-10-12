@@ -11,6 +11,7 @@ import CommititesdownList from './views/CommoditiesdownList.vue'
 import headerList from './views/headerList.vue'
 import headerListis from './views/headerListis.vue'
 import headerOrder from './views/header/headerOrder.vue'
+import orderSearch from './views/orderSearch/orderSearch.vue'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -94,6 +95,14 @@ export default new Router({
           path:'/header/headerOrder',
           name:'headerOrder',
           component:headerOrder,
+          meta:{
+            keepAlive:false
+          }
+        },
+        {
+          path:'/orderSearch/list',
+          name:'orderSearch',
+          component:orderSearch,
           meta:{
             keepAlive:false
           }

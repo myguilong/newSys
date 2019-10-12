@@ -60,6 +60,16 @@ module.exports = [{
         componentName: '/header/isheaderOrder'
       }
     ]
+  },
+  {
+    name: '订单检索',
+    icon:'el-icon-setting',
+    id: 'orderSearch',
+    sub: [{
+      name: '订单查询',
+      componentName: '/orderSearch/list'
+    }
+    ]
   }
 ]
   

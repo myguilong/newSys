@@ -51,7 +51,7 @@
     </div>
     <el-footer>
        <el-button type="success" @click="exportOrder">导出订单</el-button>
-      <el-button type="warning" @click="deleteXlsx">删除服务器缓存订单</el-button>
+       <el-button type="warning" @click="deleteXlsx">删除服务器缓存订单</el-button>
     </el-footer>
     <!-- <div class="block">
       <span class="demonstration">带快捷选项</span>
@@ -106,8 +106,7 @@ export default {
     };
   },
   mounted() {
-    this.getHeaderList();
-    this.getHeaderOrderList();
+
   },
   watch: {
     // value(value){
@@ -115,72 +114,9 @@ export default {
     // }
   },
   methods: {
-    selectHeader() {
-      console.log("改变");
-      let startTime = new Date(this.value1).getTime();
-      let endTime = new Date(this.value2).getTime();
-      let data = {};
-      this.value ? (data.headerId = this.value) : null;
-      this.value1 ? (data.startTime = startTime) : null;
-      this.value2 ? (data.endTime = endTime) : null;
-      this.$http
-        .get("/adminHeader/getHeaderOrder", {
-          params: data
-        })
-        .then(res => {
-          console.log(res, "一个团长的订单");
-          this.orderlist = res.data.list;
-        });
-    },
-    deleteXlsx() {
-      //删除接口服务里缓存的订单
-      this.$http.delete("/adminheader/deleteOrderXlsx");
-    },
-    getHeaderOrderList() {
-      this.$http.get("/adminheader/getHeaderOrder").then(res => {
-        console.log(res.data, "订单列表");
-        this.orderlist = res.data.list;
-      });
-    },
-    getHeaderList() {
-      console.log("获取团长列表");
-      this.$http.get("/adminHeader/isHeader").then(res => {
-        console.log(res.data.data, "团长列表");
-        // this.orderlist = res.data.list;
-        this.headerList = res.data.data;
-      });
-    },
-    exportOrder() {
-      console.log("导出订单");
-      if (this.value1 == "" && this.value2 == "") {
-        this.$message({
-          type: "fail",
-          message: "操作失败请选择时间"
-        });
-      } else if (this.value == "") {
-        this.$message({
-          type: "fail",
-          message: "请选择团长"
-        });
-      } else {
-        let startTime = new Date(this.value1).getTime();
-        let endTime = new Date(this.value2).getTime();
-        let data = {};
-        this.value ? (data.headerId = this.value) : null;
-        this.value1 ? (data.startTime = startTime) : null;
-        this.value2 ? (data.endTime = endTime) : null;
-        this.$http
-          .get("/adminheader/exportOrder", {
-            params:data
-          })
-          .then(res => {
-            console.log(res.data, "数据导出");
-            window.location = `http://localhost:3000/${res.data.fileName}`;
-          });
-      }
-    }
   }
-};
+   
+}
 </script>
 <style lang='scss'>
 .block {
