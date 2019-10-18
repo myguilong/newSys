@@ -12,6 +12,9 @@ import headerList from './views/headerList.vue'
 import headerListis from './views/headerListis.vue'
 import headerOrder from './views/header/headerOrder.vue'
 import orderSearch from './views/orderSearch/orderSearch.vue'
+import adminEdit from './views/adminEdit/adminEdit.vue'
+import CommissionSetting from './views/Commission/CommissionSetting.vue'
+import FlowingWater from './views/FlowingWater/Flowingwater.vue'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -103,6 +106,30 @@ export default new Router({
           path:'/orderSearch/list',
           name:'orderSearch',
           component:orderSearch,
+          meta:{
+            keepAlive:false
+          }
+        },
+        {
+          path:'/adminEdit/list',
+          name:'adminEdit',
+          component:adminEdit,
+          meta:{
+            keepAlive:false
+          }
+        },
+        {
+          path:'/Commission/CommissionSetting',
+          name:'Commission',
+          component:CommissionSetting,
+          meta:{
+            keepAlive:false
+          }
+        },
+        {
+          path:'/FlowingWater/FlowingWaterS',
+          name:'FlowingWater',
+          component:FlowingWater,
           meta:{
             keepAlive:false
           }

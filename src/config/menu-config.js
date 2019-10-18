@@ -25,7 +25,7 @@ module.exports = [{
     icon:'el-icon-money',
     sub: [{
       name: '修改佣金比例',
-      componentName: 'BasicRadio'
+      componentName: '/Commission/CommissionSetting'
     }]
   }, {
     name: '团长管理',
@@ -53,11 +53,11 @@ module.exports = [{
       componentName: '/header/list'
     },{
         name: '账单流水',
-        componentName: '/header/isheaderList'
+        componentName: '/FlowingWater/FlowingWaterS'
       },
       {
         name: '系统管理员管理',
-        componentName: '/header/isheaderOrder'
+        componentName: '/adminEdit/list'
       }
     ]
   },
@@ -71,5 +71,6 @@ module.exports = [{
     }
     ]
   }
+
 ]
   
