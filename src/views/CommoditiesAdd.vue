@@ -218,10 +218,7 @@ export default {
      submit() {
        //上传轮播图
       const client = new OSS({
-        region: "oss-cn-shenzhen",
-        accessKeyId: "LTAIDaT373YHmkTC",
-        accessKeySecret: "ndTGswjQlWA2uz1m4Du3Drd73ULN13",
-        bucket: "mycz"
+
       });
       const fNum = this.files;
       let oldImg = []; //用来存放未改变的数组
