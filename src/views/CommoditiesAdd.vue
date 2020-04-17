@@ -272,8 +272,8 @@ export default {
       //上传图片操作
       const clinet = new OSS({
         region: "oss-cn-shenzhen",
-        accessKeyId: "LTAIDaT373YHmkTC",
-        accessKeySecret: "ndTGswjQlWA2uz1m4Du3Drd73ULN13",
+        accessKeyId: "",
+        accessKeySecret: "",
         bucket: "mycz"
       });
       //命名规则
